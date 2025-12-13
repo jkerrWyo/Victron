@@ -1,0 +1,12 @@
+<settings>
+    <notes>Victron Battery Monitor</notes>
+    <devices>
+        <deviceLink link="victronbatterymonitor" vid="1027" pid="24597" portName="VictronTest (COM1)" baudRate="19200" dataBits="8" stopBits="1" parity="0" flowControl="0" postLink="<Your URL here for writing to website>" timer="0" name="Victron1" description="Data from the Victron battery monitor">
+            <register command="REQUEST_GET" id="ID_CONSUMED_AH" hasData="false" data="0"/>
+            <register command="REQUEST_GET" id="ID_MAIN_VOLTAGE" hasData="false" data="0"/>
+            <register command="REQUEST_GET" id="ID_CURRENT" hasData="false" data="0"/>
+            <register command="REQUEST_GET" id="ID_POWER" hasData="false" data="0"/>
+            <register command="REQUEST_GET" id="ID_SOC" hasData="false" data="0"/>
+        </deviceLink>
+    </devices>
+</settings>
