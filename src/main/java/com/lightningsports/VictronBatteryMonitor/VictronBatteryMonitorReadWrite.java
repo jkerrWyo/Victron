@@ -64,8 +64,12 @@ public class VictronBatteryMonitorReadWrite {
                     logger.info("Port Open");
                     List<VictronRequestInfo> requestList=new ArrayList<VictronRequestInfo>();
                     List<AppKey> victronRequests=victron.getValues();
+                    victronData.clearAllStatus();
                     for (AppKey item:victronRequests) {
-                        requestList.add(new VictronRequestInfo(item.getAttribute("command"),item.getAttribute("id"),Boolean.parseBoolean(item.getAttribute("hasData")),Integer.parseInt(item.getAttribute("data"))));
+                        if (item.getKey().equals("register")) {
+                            requestList.add(new VictronRequestInfo(item.getAttribute("command"), item.getAttribute("id"), Boolean.parseBoolean(item.getAttribute("hasData")), Integer.parseInt(item.getAttribute("data"))));
+                            victronData.setReadComplete(item.getAttribute("id"));
+                        }
                     }
                     Iterator<VictronRequestInfo> requestIterator=requestList.iterator();
                     VictronSerialListener victronListener=new VictronSerialListener(victronPort);
